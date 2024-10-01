@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Font Delivery Example</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Zilla Slab', serif;
+            background-color: #f4f4f4;
             color: #333;
-            text-align: center;
-            padding: 50px;
+            padding: 20px;
         }
         h1 {
             font-size: 2.5em;
@@ -18,21 +18,19 @@
         p {
             font-size: 1.2em;
         }
-        .font-explanation {
-            font-family: 'MyCustomFont'; /* Placeholder for your custom font */
-            font-size: 1.5em;
-            margin-top: 20px;
-        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet"> <!-- Example for visual testing -->
 </head>
 <body>
-    <h1>How Fonts are Delivered to Clients</h1>
-    <p>This page explains how to deliver fonts using the @font-face method.</p>
-    
-    <div class="font-explanation">
-        To use a custom font, upload the font files to your server and define them using the @font-face rule in your CSS. This method ensures that all users see the same font, regardless of what is installed on their device.
-    </div>
+    <h1>How to Deliver Fonts to a Browser</h1>
+    <p>
+        Fonts can be delivered to a browser through various methods, but one of the most common and user-friendly methods is using Google Fonts. 
+        By including a specific `<link>` in your HTML, you can easily load a font hosted by Google on your website. 
+        This method minimizes the need for local font files and ensures that the font is accessible across all devices.
+    </p>
+    <p>
+        To use a Google Font, simply select the desired font, copy the provided `<link>` tag, and paste it into the `<head>` section of your HTML document. 
+        After that, you can specify the font in your CSS using the `font-family` property.
+    </p>
 
     <footer>
         <p>Last updated: 
@@ -40,9 +38,8 @@
         </p>
     </footer>
     <script type="text/javascript">
-         var x = document.lastModified;
-         document.getElementById('lastModified').textContent = x;
+        var x = document.lastModified;
+        document.getElementById('lastModified').textContent = x;
     </script>
 </body>
 </html>
-
