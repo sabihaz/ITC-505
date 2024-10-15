@@ -1,0 +1,55 @@
+/* Global Styles */
+body {
+    font-family: 'Georgia', serif;
+    color: #333333;
+    background-color: #f9f9f9;
+    line-height: 1.8;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    background-color: #004080;
+    color: #ffffff;
+    padding: 20px;
+}
+
+/* Heading Styles */
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+    color: #004080;
+}
+
+/* Article and Section Styles */
+article {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+/* Paragraph Styles */
+p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    font-size: 0.9em;
+    background-color: #004080;
+    color: #ffffff;
+    padding: 10px;
+}
