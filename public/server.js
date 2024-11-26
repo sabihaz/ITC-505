@@ -19,3 +19,23 @@ if (process.argv[2] === 'local') {
   port = 8080
 }
 server.listen(port, () => console.log('Ready on localhost!'))
+// post code 
+server.post('/ITC505/lab-7/', (req, res) => {
+    const { noun, verb, adjective, place, pluralNoun } = req.body;
+
+    if (!noun || !verb || !adjective || !place || !pluralNoun) {
+        res.send(`
+            <h1>Submission Failed</h1>
+            <p>Please fill out ALL fields</p>
+            <a href="/ITC505/lab-7/">Go Back to Form</a>
+        `);
+        return;
+    }
+
+    const madLib = `Once upon a time in ${place}, a ${adjective} ${noun} decided to ${verb} with a group of ${pluralNoun}. It was an unforgettable adventure!`;
+    res.send(`
+        <h1>Mad Lib Result</h1>
+        <p>${madLib}</p>
+        <a href="/ITC505/lab-7/">Create Another Mad Lib</a>
+    `);
+});
