@@ -1,49 +1,40 @@
-function validateForm() {
-    // Get field values
-    const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
+document.getElementById("secureForm").addEventListener("submit", function(event) {
+    const firstName = sanitizeInput(document.getElementById("firstName").value.trim());
+    const lastName = sanitizeInput(document.getElementById("lastName").value.trim());
+    const email = sanitizeInput(document.getElementById("email").value.trim());
+    const password = sanitizeInput(document.getElementById("password").value);
+    const confirmPassword = sanitizeInput(document.getElementById("confirmPassword").value);
+    const errorMessage = document.getElementById("errorMessage");
 
-    // Get error spans
-    const firstNameError = document.getElementById('firstNameError');
-    const lastNameError = document.getElementById('lastNameError');
-    const emailError = document.getElementById('emailError');
-    const passwordError = document.getElementById('passwordError');
-    const confirmPasswordError = document.getElementById('confirmPasswordError');
+    let errors = [];
 
-    // Reset errors
-    firstNameError.textContent = '';
-    lastNameError.textContent = '';
-    emailError.textContent = '';
-    passwordError.textContent = '';
-    confirmPasswordError.textContent = '';
+    // Validate empty fields
+    if (!firstName || !lastName || !email || !password || !confirmPassword) {
+        errors.push("All fields are required.");
+    }
 
-    let valid = true;
+    // Validate email format
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(email)) {
+        errors.push("Invalid email format.");
+    }
 
-    // Validate fields
-    if (!firstName) {
-        firstNameError.textContent = 'First name is required.';
-        valid = false;
-    }
-    if (!lastName) {
-        lastNameError.textContent = 'Last name is required.';
-        valid = false;
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email)) {
-        emailError.textContent = 'Invalid email format.';
-        valid = false;
-    }
-    if (!password) {
-        passwordError.textContent = 'Password is required.';
-        valid = false;
-    }
+    // Validate password match
     if (password !== confirmPassword) {
-        confirmPasswordError.textContent = 'Passwords do not match.';
-        valid = false;
+        errors.push("Passwords do not match.");
     }
 
-    return valid;
+    if (errors.length > 0) {
+        event.preventDefault();
+        errorMessage.textContent = errors.join(" ");
+    } else {
+        errorMessage.textContent = "";
+    }
+});
+
+// Function to sanitize input by escaping special characters
+function sanitizeInput(input) {
+    const div = document.createElement("div");
+    div.innerText = input; // Escapes HTML characters
+    return div.innerText;
 }
